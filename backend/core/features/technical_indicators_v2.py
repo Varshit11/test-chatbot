@@ -1,7 +1,13 @@
 
 import pandas as pd
 import numpy as np
-import talib
+try:
+    import talib  # type: ignore
+except ImportError:
+    # Deployed beta reads pre-built feature parquet; talib is only needed when
+    # this class actually computes indicators (ingest path). Guard the import
+    # so module load succeeds on hosts that don't have the TA-Lib C library.
+    talib = None
 from typing import Dict, Any, List, Tuple, Optional
 import warnings
 import logging
