@@ -1,0 +1,76 @@
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =============================================================================
+# Local databases (SQLite dev DB — should NOT ship with the deploy)
+# =============================================================================
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+quantflow.db
+
+# =============================================================================
+# Node / Next.js
+# =============================================================================
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.npm/
+.eslintcache
+
+# =============================================================================
+# Tailwind generated CSS (rebuilt at deploy time by `predev` / `prebuild`)
+# =============================================================================
+frontend/public/quantflow-tw.css
+
+# =============================================================================
+# Environment / secrets
+# =============================================================================
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# =============================================================================
+# Logs
+# =============================================================================
+*.log
+backend/_server.*.log
+
+# =============================================================================
+# IDE / OS junk
+# =============================================================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =============================================================================
+# Local feature-cache pickle (regenerated on demand; the prebuilt parquet under
+# backend/data/prebuilt_features/ IS committed and IS the source of truth).
+# =============================================================================
+backend/data/feature_cache/
+
+# =============================================================================
+# What is NOT ignored — explicitly listed so future-you doesn't accidentally
+# add a broader rule above that catches them:
+#   backend/data/ohlcv/**/*.parquet           ← canonical OHLCV bundle
+#   backend/data/prebuilt_features/*.parquet  ← canonical SMC + TI features
+# These are the ~50 MB of bundled data the deployed chatbot reads from.
+# =============================================================================
